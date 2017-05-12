@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments :: head(title='Topics : View all')">
+	<title>Topics : View all</title>
+</head>
+<body>
+<div class="container">
+	<div th:replace="fragments :: navbar"></div>
+	<h1>Topics : View all</h1>
+	<div class="container">
+		<div class="pull-right">
+			<a href="/v1/reddit/topics/new">Create Topic</a>
+		</div>
+		<table class="table table-bordered table-striped">
+			<thead>
+			<tr>
+				<td>Vote</td>
+				<td>Topic</td>
+			</tr>
+			</thead>
+			<tbody>
+			<tr th:if="${topics.empty}">
+				<td colspan="2">No topics</td>
+			</tr>
+			<tr th:each="topic : ${topics}">
+				<td><a th:href="@{'/v1/reddit/topics/' + ${topic.text}}" th:text="up"></a></td>
+				<td th:text="${topic.text}"></td>
+			</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+</body>
+</html>
