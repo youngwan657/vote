@@ -1,6 +1,7 @@
 package com.reddit.vote.repository;
 
 import com.reddit.vote.domain.Topic;
+import com.reddit.vote.domain.Vote;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
@@ -22,13 +23,15 @@ public class TopicRepository {
 		topics.add(topic);
 	}
 
-	public void increaseUp(int topicId) {
-		Topic topic = topicPersistentStorage.get(topicId);
-		topic.increaseUp();
-	}
+	public void handleUpDown(Vote vote) {
+		switch(vote.getUpDown()) {
+			case UP:
+				topicPersistentStorage.get(vote.getTopicId()).increaseUp();
+				break;
 
-	public void increaseDown(int topicId) {
-		Topic topic = topicPersistentStorage.get(topicId);
-		topic.increaseDown();
+			case DOWN:
+				topicPersistentStorage.get(vote.getTopicId()).increaseDown();
+				break;
+		}
 	}
 }

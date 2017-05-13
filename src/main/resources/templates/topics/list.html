@@ -20,10 +20,21 @@
 			</thead>
 			<tbody>
 			<tr th:if="${topics.empty}">
-				<td colspan="2">No topics</td>
+				<td colspan="3">No topics</td>
 			</tr>
 			<tr th:each="topic : ${topics}">
-				<td><a th:href="@{'/v1/reddit/topics/' + ${topic.text}}" th:text="up"></a></td>
+				<td>
+					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
+						<input type="hidden" name="upDown" value="UP" />
+						<input type="submit" value="up" />
+					</form>
+				</td>
+				<td>
+					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
+						<input type="hidden" name="upDown" value="DOWN" />
+						<input type="submit" value="down" />
+					</form>
+				</td>
 				<td th:text="${topic.text}"></td>
 			</tr>
 			</tbody>

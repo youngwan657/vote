@@ -7,7 +7,7 @@
 <div class="container">
 	<div th:replace="fragments :: navbar"></div>
 	<h1>Topic : Create</h1>
-	<form id="topicForm" th:action="@{/v1/reddit/topics}" th:object="${topic}" action="#" method="post">
+	<form th:action="@{/v1/reddit/topics}" th:object="${topic}" action="#" method="post">
 		<div th:if="${#fields.hasErrors('*')}" class="alert alert-error">
 			<p th:each="error : ${#fields.errors('*')}" th:text="${error}"> Validation error</p>
 		</div>

@@ -1,6 +1,7 @@
 package com.reddit.vote.service;
 
 import com.reddit.vote.domain.Topic;
+import com.reddit.vote.domain.Vote;
 import com.reddit.vote.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,11 +25,7 @@ public class TopicService {
 		topicRepository.addTopic(topic);
 	}
 
-	public void increaseUp(int topicId) {
-		topicRepository.increaseUp(topicId);
-	}
-
-	public void increaseDown(int topicId) {
-		topicRepository.increaseDown(topicId);
+	public void handleVote(Vote vote) {
+		topicRepository.handleUpDown(vote);
 	}
 }

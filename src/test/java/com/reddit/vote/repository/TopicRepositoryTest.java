@@ -1,6 +1,8 @@
 package com.reddit.vote.repository;
 
 import com.reddit.vote.domain.Topic;
+import com.reddit.vote.domain.UpDown;
+import com.reddit.vote.domain.Vote;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -35,8 +37,8 @@ public class TopicRepositoryTest {
 		topicRepository.addTopic(new Topic().setId(2));
 
 		// When
-		topicRepository.increaseUp(1);
-		topicRepository.increaseUp(1);
+		topicRepository.handleUpDown(new Vote().setTopicId(1).setUpDown(UpDown.UP));
+		topicRepository.handleUpDown(new Vote().setTopicId(1).setUpDown(UpDown.UP));
 
 		// Then
 		assertThat(topicRepository.getTopics().get(0).getUp()).isEqualTo(2);
@@ -50,8 +52,8 @@ public class TopicRepositoryTest {
 		topicRepository.addTopic(new Topic().setId(2));
 
 		// When
-		topicRepository.increaseDown(2);
-		topicRepository.increaseDown(2);
+		topicRepository.handleUpDown(new Vote().setTopicId(2).setUpDown(UpDown.DOWN));
+		topicRepository.handleUpDown(new Vote().setTopicId(2).setUpDown(UpDown.DOWN));
 
 		// Then
 		assertThat(topicRepository.getTopics().get(0).getDown()).isEqualTo(0);
