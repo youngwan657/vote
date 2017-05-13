@@ -21,7 +21,7 @@ public class TopicController {
 	private TopicService topicService;
 
 	@GetMapping(value = Constants.TOP20_URL)
-	public ModelAndView getTop20Topics() {
+	public ModelAndView getTopTopics() {
 		List<Topic> topics = topicService.getTopTopics();
 		return new ModelAndView("topics/list", "topics", topics);
 	}

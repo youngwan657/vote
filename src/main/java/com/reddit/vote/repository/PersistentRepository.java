@@ -1,7 +1,6 @@
 package com.reddit.vote.repository;
 
 import com.reddit.vote.model.Topic;
-import com.reddit.vote.model.Vote;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
@@ -19,17 +18,11 @@ public class PersistentRepository {
 		topics.put(topic.getId(), topic);
 	}
 
-	public Topic vote(Vote vote) {
-		Topic topic = topics.get(vote.getTopicId());
-		switch(vote.getVoteType()) {
-			case UP:
-				topic.upvote();
-				break;
+	public Topic upvote(int topicId) {
+		return topics.get(topicId).upvote();
+	}
 
-			case DOWN:
-				topic.downvote();
-				break;
-		}
-		return topic;
+	public Topic downvote(int topicId) {
+		return topics.get(topicId).downvote();
 	}
 }

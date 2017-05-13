@@ -2,7 +2,6 @@ package com.reddit.vote.service;
 
 import com.reddit.vote.model.Topic;
 import com.reddit.vote.model.Vote;
-import com.reddit.vote.repository.PersistentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ public class TopicService {
 	private CacheService cacheService;
 
 	@Autowired
-	private PersistentRepository persistentRepository;
+	private PersistentService persistentService;
 
 	public List<Topic> getTopTopics() {
 		return cacheService.getTopTopics();
@@ -25,12 +24,12 @@ public class TopicService {
 
 	public void save(Topic topic) {
 		topic.setId(counterService.generateId());
-		persistentRepository.save(topic);
+		persistentService.save(topic);
 		cacheService.save(topic);
 	}
 
 	public void vote(Vote vote) {
-		Topic topic = persistentRepository.vote(vote);
+		Topic topic = persistentService.vote(vote);
 		cacheService.refresh(topic);
 	}
 }
