@@ -19,15 +19,17 @@ public class PersistentRepository {
 		topics.put(topic.getId(), topic);
 	}
 
-	public void handleUpDown(Vote vote) {
+	public Topic handleUpDown(Vote vote) {
+		Topic topic = topics.get(vote.getTopicId());
 		switch(vote.getUpDown()) {
 			case UP:
-				topics.get(vote.getTopicId()).increaseUp();
+				topic.increaseUp();
 				break;
 
 			case DOWN:
-				topics.get(vote.getTopicId()).increaseDown();
+				topic.increaseDown();
 				break;
 		}
+		return topic;
 	}
 }

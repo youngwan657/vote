@@ -20,7 +20,7 @@ public class TopicService {
 	@Autowired
 	private PersistentRepository persistentRepository;
 
-	public List<Topic> getTopics() {
+	public List<Topic> getPopularTopics() {
 		return cacheRepository.getTopics();
 	}
 
@@ -31,6 +31,7 @@ public class TopicService {
 	}
 
 	public void handleVote(Vote vote) {
-		persistentRepository.handleUpDown(vote);
+		Topic topic = persistentRepository.handleUpDown(vote);
+		cacheRepository.refresh(topic);
 	}
 }

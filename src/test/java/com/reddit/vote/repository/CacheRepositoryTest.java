@@ -18,13 +18,32 @@ public class CacheRepositoryTest {
 	@Test
 	public void save() throws Exception {
 		// Given
-		cacheRepository.save(new Topic());
-		cacheRepository.save(new Topic());
+		cacheRepository.save(new Topic().setId(1).increaseUp().increaseUp().increaseUp());
+		cacheRepository.save(new Topic().setId(2).increaseUp());
 
 		// When
 		List<Topic> topics = cacheRepository.getTopics();
+		Topic topic1 = topics.get(0);
+		Topic topic2 = topics.get(1);
 
 		// Then
-		assertThat(topics.size()).isEqualTo(2);
+		assertThat(topic1.getId()).isEqualTo(1);
+		assertThat(topic2.getId()).isEqualTo(2);
+	}
+
+	@Test
+	public void saveReverse() throws Exception {
+		// Given
+		cacheRepository.save(new Topic().setId(1).increaseUp());
+		cacheRepository.save(new Topic().setId(2).increaseUp().increaseUp().increaseUp());
+
+		// When
+		List<Topic> topics = cacheRepository.getTopics();
+		Topic topic1 = topics.get(0);
+		Topic topic2 = topics.get(1);
+
+		// Then
+		assertThat(topic1.getId()).isEqualTo(2);
+		assertThat(topic2.getId()).isEqualTo(1);
 	}
 }

@@ -22,7 +22,7 @@ public class TopicController {
 
 	@GetMapping(value = Constants.LIST_URL)
 	public ModelAndView getTopics() {
-		List<Topic> topics = topicService.getTopics();
+		List<Topic> topics = topicService.getPopularTopics();
 		return new ModelAndView("topics/list", "topics", topics);
 	}
 
