@@ -19,7 +19,7 @@ public class Topic {
 		return this.id;
 	}
 
-	public Topic id(int id) {
+	public Topic setId(int id) {
 		this.id = id;
 		return this;
 	}
@@ -28,7 +28,7 @@ public class Topic {
 		return this.text;
 	}
 
-	public Topic text(String text) {
+	public Topic setText(String text) {
 		this.text = text;
 		return this;
 	}

@@ -35,7 +35,7 @@ public class TopicTest {
 	@Test
 	public void checkEmpty() throws Exception {
 		// Given
-		Topic emptyTopic = new Topic().text("");
+		Topic emptyTopic = new Topic().setText("");
 
 		// When
 		Set<ConstraintViolation<Topic>> constraintViolations = validator.validate(emptyTopic);
@@ -47,7 +47,7 @@ public class TopicTest {
 	@Test
 	public void checkValid() throws Exception {
 		// Given
-		Topic validTopic = new Topic().text(String.valueOf(new char[255]));
+		Topic validTopic = new Topic().setText(String.valueOf(new char[255]));
 
 		// When
 		Set<ConstraintViolation<Topic>> validate = validator.validate(validTopic);
@@ -59,7 +59,7 @@ public class TopicTest {
 	@Test
 	public void checkMaximumLength() throws Exception {
 		// Given
-		Topic invalidTopic = new Topic().text(String.valueOf(new char[256]));
+		Topic invalidTopic = new Topic().setText(String.valueOf(new char[256]));
 
 		// When
 		Set<ConstraintViolation<Topic>> constraintViolations = validator.validate(invalidTopic);

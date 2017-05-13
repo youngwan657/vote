@@ -31,8 +31,8 @@ public class TopicRepositoryTest {
 	@Test
 	public void upvotes() throws Exception {
 		// Given
-		topicRepository.addTopic(new Topic().id(1));
-		topicRepository.addTopic(new Topic().id(2));
+		topicRepository.addTopic(new Topic().setId(1));
+		topicRepository.addTopic(new Topic().setId(2));
 
 		// When
 		topicRepository.increaseUp(1);
@@ -46,8 +46,8 @@ public class TopicRepositoryTest {
 	@Test
 	public void downvotes() throws Exception {
 		// Given
-		topicRepository.addTopic(new Topic().id(1));
-		topicRepository.addTopic(new Topic().id(2));
+		topicRepository.addTopic(new Topic().setId(1));
+		topicRepository.addTopic(new Topic().setId(2));
 
 		// When
 		topicRepository.increaseDown(2);

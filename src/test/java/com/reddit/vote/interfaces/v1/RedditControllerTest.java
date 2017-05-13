@@ -48,7 +48,7 @@ public class RedditControllerTest {
 	@Test
 	public void submit() throws Exception {
 		mvc.perform(post(Constants.CREATION_URL)
-			.content(mapper.writeValueAsString(new Topic().text("text1"))))
+			.content(mapper.writeValueAsString(new Topic().setText("text1"))))
 			.andExpect(status().is3xxRedirection());
 	}
 }

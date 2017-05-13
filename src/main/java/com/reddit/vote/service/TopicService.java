@@ -20,7 +20,7 @@ public class TopicService {
 	}
 
 	public void saveTopic(Topic topic) {
-		topic.id(counterService.generate());
+		topic.setId(counterService.generate());
 		topicRepository.addTopic(topic);
 	}
 
