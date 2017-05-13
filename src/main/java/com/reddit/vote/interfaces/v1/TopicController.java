@@ -22,7 +22,7 @@ public class TopicController {
 
 	@GetMapping(value = Constants.TOP20_URL)
 	public ModelAndView getTop20Topics() {
-		List<Topic> topics = topicService.getTop20Topics();
+		List<Topic> topics = topicService.getTopTopics();
 		return new ModelAndView("topics/list", "topics", topics);
 	}
 

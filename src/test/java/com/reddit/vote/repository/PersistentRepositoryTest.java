@@ -3,6 +3,7 @@ package com.reddit.vote.repository;
 import com.reddit.vote.model.Topic;
 import com.reddit.vote.model.VoteType;
 import com.reddit.vote.model.Vote;
+import com.reddit.vote.service.CacheService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -16,7 +17,7 @@ public class PersistentRepositoryTest {
 	private PersistentRepository persistentRepository;
 
 	@InjectMocks
-	private CacheRepository cacheRepository;
+	private CacheService cacheService;
 
 	@Test
 	public void save() throws Exception {
@@ -38,16 +39,16 @@ public class PersistentRepositoryTest {
 		Topic topic2 = new Topic().setId(2);
 		persistentRepository.save(topic1);
 		persistentRepository.save(topic2);
-		cacheRepository.save(topic1);
-		cacheRepository.save(topic2);
+		cacheService.save(topic1);
+		cacheService.save(topic2);
 
 		// When
 		persistentRepository.vote(new Vote().setTopicId(1).setVoteType(VoteType.UP));
 		persistentRepository.vote(new Vote().setTopicId(1).setVoteType(VoteType.UP));
 
 		// Then
-		assertThat(cacheRepository.getTop20Topics().get(0).getUp()).isEqualTo(2);
-		assertThat(cacheRepository.getTop20Topics().get(1).getUp()).isEqualTo(0);
+		assertThat(cacheService.getTopTopics().get(0).getUp()).isEqualTo(2);
+		assertThat(cacheService.getTopTopics().get(1).getUp()).isEqualTo(0);
 	}
 
 	@Test
@@ -57,15 +58,15 @@ public class PersistentRepositoryTest {
 		Topic topic2 = new Topic().setId(2);
 		persistentRepository.save(topic1);
 		persistentRepository.save(topic2);
-		cacheRepository.save(topic1);
-		cacheRepository.save(topic2);
+		cacheService.save(topic1);
+		cacheService.save(topic2);
 
 		// When
 		persistentRepository.vote(new Vote().setTopicId(2).setVoteType(VoteType.DOWN));
 		persistentRepository.vote(new Vote().setTopicId(2).setVoteType(VoteType.DOWN));
 
 		// Then
-		assertThat(cacheRepository.getTop20Topics().get(0).getDown()).isEqualTo(0);
-		assertThat(cacheRepository.getTop20Topics().get(1).getDown()).isEqualTo(2);
+		assertThat(cacheService.getTopTopics().get(0).getDown()).isEqualTo(0);
+		assertThat(cacheService.getTopTopics().get(1).getDown()).isEqualTo(2);
 	}
 }

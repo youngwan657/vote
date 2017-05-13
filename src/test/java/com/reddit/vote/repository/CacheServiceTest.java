@@ -1,6 +1,7 @@
 package com.reddit.vote.repository;
 
 import com.reddit.vote.model.Topic;
+import com.reddit.vote.service.CacheService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -11,18 +12,18 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(MockitoJUnitRunner.class)
-public class CacheRepositoryTest {
+public class CacheServiceTest {
 	@InjectMocks
-	private CacheRepository cacheRepository;
+	private CacheService cacheService;
 
 	@Test
 	public void save() throws Exception {
 		// Given
-		cacheRepository.save(new Topic().setId(1).upvote().upvote().upvote());
-		cacheRepository.save(new Topic().setId(2).upvote());
+		cacheService.save(new Topic().setId(1).upvote().upvote().upvote());
+		cacheService.save(new Topic().setId(2).upvote());
 
 		// When
-		List<Topic> topics = cacheRepository.getTop20Topics();
+		List<Topic> topics = cacheService.getTopTopics();
 		Topic topic1 = topics.get(0);
 		Topic topic2 = topics.get(1);
 
@@ -34,11 +35,11 @@ public class CacheRepositoryTest {
 	@Test
 	public void saveReverse() throws Exception {
 		// Given
-		cacheRepository.save(new Topic().setId(1).upvote());
-		cacheRepository.save(new Topic().setId(2).upvote().upvote().upvote());
+		cacheService.save(new Topic().setId(1).upvote());
+		cacheService.save(new Topic().setId(2).upvote().upvote().upvote());
 
 		// When
-		List<Topic> topics = cacheRepository.getTop20Topics();
+		List<Topic> topics = cacheService.getTopTopics();
 		Topic topic1 = topics.get(0);
 		Topic topic2 = topics.get(1);
 
