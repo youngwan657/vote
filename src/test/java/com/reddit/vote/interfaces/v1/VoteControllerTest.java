@@ -1,7 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reddit.vote.domain.VoteType;
+import com.reddit.vote.model.VoteType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

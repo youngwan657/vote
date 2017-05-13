@@ -1,6 +1,6 @@
 package com.reddit.vote.repository;
 
-import com.reddit.vote.domain.Topic;
+import com.reddit.vote.model.Topic;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;

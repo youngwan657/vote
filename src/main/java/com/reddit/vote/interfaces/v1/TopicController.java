@@ -1,7 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
 import com.reddit.vote.common.Constants;
-import com.reddit.vote.domain.Topic;
+import com.reddit.vote.model.Topic;
 import com.reddit.vote.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

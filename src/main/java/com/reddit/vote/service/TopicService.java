@@ -1,7 +1,7 @@
 package com.reddit.vote.service;
 
-import com.reddit.vote.domain.Topic;
-import com.reddit.vote.domain.Vote;
+import com.reddit.vote.model.Topic;
+import com.reddit.vote.model.Vote;
 import com.reddit.vote.repository.CacheRepository;
 import com.reddit.vote.repository.PersistentRepository;
 import org.springframework.beans.factory.annotation.Autowired;

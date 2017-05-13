@@ -1,5 +1,6 @@
 package com.reddit.vote.domain;
 
+import com.reddit.vote.model.Topic;
 import org.junit.BeforeClass;
 import org.junit.Test;
 

@@ -1,4 +1,4 @@
-package com.reddit.vote.domain;
+package com.reddit.vote.model;
 
 public enum VoteType {
 	UP,
