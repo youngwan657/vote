@@ -23,4 +23,12 @@ public class TopicService {
 		topic.id(counterService.generate());
 		topicRepository.addTopic(topic);
 	}
+
+	public void increaseUp(int topicId) {
+		topicRepository.increaseUp(topicId);
+	}
+
+	public void increaseDown(int topicId) {
+		topicRepository.increaseDown(topicId);
+	}
 }
