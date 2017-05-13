@@ -11,26 +11,21 @@ public class Topic {
 	@Size(min = 1, max = 255, message = "A topic size should be between 1 and 255")
 	private String text;
 
-	public Topic() {
-	}
-
-	public Topic(String text) {
-		this.text = text;
-	}
-
 	public int getId() {
 		return this.id;
 	}
 
-	public void setId(int id) {
+	public Topic id(int id) {
 		this.id = id;
+		return this;
 	}
 
 	public String getText() {
 		return this.text;
 	}
 
-	public void setText(String text) {
+	public Topic text(String text) {
 		this.text = text;
+		return this;
 	}
 }

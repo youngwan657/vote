@@ -28,7 +28,7 @@ public class RedditControllerTest {
 	private WebApplicationContext webApplicationContext;
 
 	@Before
-	public void setup() throws  Exception {
+	public void setup() throws Exception {
 		mvc = webAppContextSetup(webApplicationContext).build();
 		mapper = new ObjectMapper();
 	}
@@ -48,7 +48,7 @@ public class RedditControllerTest {
 	@Test
 	public void submit() throws Exception {
 		mvc.perform(post(Constants.CREATION_URL)
-			.content(mapper.writeValueAsString(new Topic("text1"))))
+			.content(mapper.writeValueAsString(new Topic().text("text1"))))
 			.andExpect(status().is3xxRedirection());
 	}
 }
