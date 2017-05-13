@@ -18,11 +18,11 @@ public class CacheRepositoryTest {
 	@Test
 	public void save() throws Exception {
 		// Given
-		cacheRepository.save(new Topic().setId(1).increaseUp().increaseUp().increaseUp());
-		cacheRepository.save(new Topic().setId(2).increaseUp());
+		cacheRepository.save(new Topic().setId(1).upvote().upvote().upvote());
+		cacheRepository.save(new Topic().setId(2).upvote());
 
 		// When
-		List<Topic> topics = cacheRepository.getTopics();
+		List<Topic> topics = cacheRepository.getTop20Topics();
 		Topic topic1 = topics.get(0);
 		Topic topic2 = topics.get(1);
 
@@ -34,11 +34,11 @@ public class CacheRepositoryTest {
 	@Test
 	public void saveReverse() throws Exception {
 		// Given
-		cacheRepository.save(new Topic().setId(1).increaseUp());
-		cacheRepository.save(new Topic().setId(2).increaseUp().increaseUp().increaseUp());
+		cacheRepository.save(new Topic().setId(1).upvote());
+		cacheRepository.save(new Topic().setId(2).upvote().upvote().upvote());
 
 		// When
-		List<Topic> topics = cacheRepository.getTopics();
+		List<Topic> topics = cacheRepository.getTop20Topics();
 		Topic topic1 = topics.get(0);
 		Topic topic2 = topics.get(1);
 

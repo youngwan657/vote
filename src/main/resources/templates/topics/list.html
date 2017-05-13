@@ -6,7 +6,7 @@
 <body>
 <div class="container">
 	<div th:replace="fragments :: navbar"></div>
-	<h1>Topics : View all</h1>
+	<h1>Topics : View top 20 topics</h1>
 	<div class="container">
 		<div class="pull-right">
 			<a href="/v1/reddit/topics/new">Create Topic</a>
@@ -26,13 +26,13 @@
 			<tr th:each="topic : ${topics}">
 				<td>
 					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
-						<input type="hidden" name="upDown" value="UP" />
+						<input type="hidden" name="voteType" value="UP" />
 						<input type="submit" value="up" />
 					</form>
 				</td>
 				<td>
 					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
-						<input type="hidden" name="upDown" value="DOWN" />
+						<input type="hidden" name="voteType" value="DOWN" />
 						<input type="submit" value="down" />
 					</form>
 				</td>

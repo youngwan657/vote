@@ -3,7 +3,7 @@ package com.reddit.vote.domain;
 public class Vote {
 
 	private int topicId;
-	private UpDown upDown;
+	private VoteType voteType;
 
 	public int getTopicId() {
 		return this.topicId;
@@ -14,12 +14,12 @@ public class Vote {
 		return this;
 	}
 
-	public UpDown getUpDown() {
-		return this.upDown;
+	public VoteType getVoteType() {
+		return this.voteType;
 	}
 
-	public Vote setUpDown(UpDown upDown) {
-		this.upDown = upDown;
+	public Vote setVoteType(VoteType voteType) {
+		this.voteType = voteType;
 		return this;
 	}
 }

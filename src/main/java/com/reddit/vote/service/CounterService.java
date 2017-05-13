@@ -8,7 +8,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class CounterService {
 	private AtomicInteger counter = new AtomicInteger();
 
-	public int generate() {
+	public int generateId() {
 		return counter.incrementAndGet();
 	}
 }

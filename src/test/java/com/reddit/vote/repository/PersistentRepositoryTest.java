@@ -1,7 +1,7 @@
 package com.reddit.vote.repository;
 
 import com.reddit.vote.domain.Topic;
-import com.reddit.vote.domain.UpDown;
+import com.reddit.vote.domain.VoteType;
 import com.reddit.vote.domain.Vote;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,12 +42,12 @@ public class PersistentRepositoryTest {
 		cacheRepository.save(topic2);
 
 		// When
-		persistentRepository.handleUpDown(new Vote().setTopicId(1).setUpDown(UpDown.UP));
-		persistentRepository.handleUpDown(new Vote().setTopicId(1).setUpDown(UpDown.UP));
+		persistentRepository.vote(new Vote().setTopicId(1).setVoteType(VoteType.UP));
+		persistentRepository.vote(new Vote().setTopicId(1).setVoteType(VoteType.UP));
 
 		// Then
-		assertThat(cacheRepository.getTopics().get(0).getUp()).isEqualTo(2);
-		assertThat(cacheRepository.getTopics().get(1).getUp()).isEqualTo(0);
+		assertThat(cacheRepository.getTop20Topics().get(0).getUp()).isEqualTo(2);
+		assertThat(cacheRepository.getTop20Topics().get(1).getUp()).isEqualTo(0);
 	}
 
 	@Test
@@ -61,11 +61,11 @@ public class PersistentRepositoryTest {
 		cacheRepository.save(topic2);
 
 		// When
-		persistentRepository.handleUpDown(new Vote().setTopicId(2).setUpDown(UpDown.DOWN));
-		persistentRepository.handleUpDown(new Vote().setTopicId(2).setUpDown(UpDown.DOWN));
+		persistentRepository.vote(new Vote().setTopicId(2).setVoteType(VoteType.DOWN));
+		persistentRepository.vote(new Vote().setTopicId(2).setVoteType(VoteType.DOWN));
 
 		// Then
-		assertThat(cacheRepository.getTopics().get(0).getDown()).isEqualTo(0);
-		assertThat(cacheRepository.getTopics().get(1).getDown()).isEqualTo(2);
+		assertThat(cacheRepository.getTop20Topics().get(0).getDown()).isEqualTo(0);
+		assertThat(cacheRepository.getTop20Topics().get(1).getDown()).isEqualTo(2);
 	}
 }

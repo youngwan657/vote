@@ -34,7 +34,7 @@ public class TopicControllerTest {
 
 	@Test
 	public void getTopics() throws Exception {
-		mvc.perform(get(Constants.LIST_URL))
+		mvc.perform(get(Constants.TOP20_URL))
 			.andExpect(status().isOk());
 	}
 

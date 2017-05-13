@@ -1,6 +1,6 @@
 package com.reddit.vote.domain;
 
-public enum UpDown {
+public enum VoteType {
 	UP,
 	DOWN,
 }

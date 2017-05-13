@@ -18,7 +18,7 @@ public class VoteController {
 
 	@PostMapping(value = Constants.VOTE_URL)
 	public ModelAndView vote(@Valid Vote vote) {
-		topicService.handleVote(vote);
-		return new ModelAndView("redirect:" + Constants.LIST_URL);
+		topicService.vote(vote);
+		return new ModelAndView("redirect:" + Constants.TOP20_URL);
 	}
 }

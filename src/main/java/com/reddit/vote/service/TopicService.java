@@ -20,18 +20,18 @@ public class TopicService {
 	@Autowired
 	private PersistentRepository persistentRepository;
 
-	public List<Topic> getPopularTopics() {
-		return cacheRepository.getTopics();
+	public List<Topic> getTop20Topics() {
+		return cacheRepository.getTop20Topics();
 	}
 
-	public void saveTopic(Topic topic) {
-		topic.setId(counterService.generate());
+	public void save(Topic topic) {
+		topic.setId(counterService.generateId());
 		persistentRepository.save(topic);
 		cacheRepository.save(topic);
 	}
 
-	public void handleVote(Vote vote) {
-		Topic topic = persistentRepository.handleUpDown(vote);
+	public void vote(Vote vote) {
+		Topic topic = persistentRepository.vote(vote);
 		cacheRepository.refresh(topic);
 	}
 }

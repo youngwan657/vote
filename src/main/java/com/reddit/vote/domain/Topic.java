@@ -37,7 +37,7 @@ public class Topic {
 		return this.up.get();
 	}
 
-	public Topic increaseUp() {
+	public Topic upvote() {
 		up.incrementAndGet();
 		return this;
 	}
@@ -46,7 +46,7 @@ public class Topic {
 		return this.down.get();
 	}
 
-	public Topic increaseDown() {
+	public Topic downvote() {
 		down.incrementAndGet();
 		return this;
 	}

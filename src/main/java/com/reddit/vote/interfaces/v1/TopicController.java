@@ -20,9 +20,9 @@ public class TopicController {
 	@Autowired
 	private TopicService topicService;
 
-	@GetMapping(value = Constants.LIST_URL)
-	public ModelAndView getTopics() {
-		List<Topic> topics = topicService.getPopularTopics();
+	@GetMapping(value = Constants.TOP20_URL)
+	public ModelAndView getTop20Topics() {
+		List<Topic> topics = topicService.getTop20Topics();
 		return new ModelAndView("topics/list", "topics", topics);
 	}
 
@@ -36,7 +36,7 @@ public class TopicController {
 		if (result.hasErrors()) {
 			return new ModelAndView("topics/form", "formErrors", result.getAllErrors());
 		}
-		topicService.saveTopic(topic);
-		return new ModelAndView("redirect:" + Constants.LIST_URL);
+		topicService.save(topic);
+		return new ModelAndView("redirect:" + Constants.TOP20_URL);
 	}
 }

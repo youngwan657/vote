@@ -1,7 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reddit.vote.domain.UpDown;
+import com.reddit.vote.domain.VoteType;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,7 +35,7 @@ public class VoteControllerTest {
 	public void vote() throws Exception {
 		final String VOTE_URL = "/v1/reddit/topics/1";
 		mvc.perform(post(VOTE_URL)
-			.param("upDown", UpDown.UP.name()))
+			.param("upDown", VoteType.UP.name()))
 			.andExpect(status().is3xxRedirection());
 	}
 }

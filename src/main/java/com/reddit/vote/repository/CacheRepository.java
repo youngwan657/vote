@@ -10,37 +10,37 @@ import java.util.PriorityQueue;
 @Repository
 public class CacheRepository {
 	private PriorityQueue<Topic> topics;
-	private List<Topic> popularTopics;
+	private List<Topic> top20Topics;
 
 	public CacheRepository() {
 		final int DEFAULT_INITIAL_CAPACITY = 11;
 		topics = new PriorityQueue<>(DEFAULT_INITIAL_CAPACITY, (o1, o2) -> (o2.getUp() - o1.getUp()));
-		popularTopics = new ArrayList<>();
+		top20Topics = new ArrayList<>();
 	}
 
-	public List<Topic> getTopics() {
-		return popularTopics;
+	public List<Topic> getTop20Topics() {
+		return top20Topics;
 	}
 
 	public void save(Topic topic) {
 		topics.add(topic);
-		refreshPopularTopics();
+		refreshTop20Topics();
 	}
 
 	public void refresh(Topic topic) {
 		topics.remove(topic);
 		topics.add(topic);
-		refreshPopularTopics();
+		refreshTop20Topics();
 	}
 
-	private void refreshPopularTopics() {
-		final int LIMIT = 20;
+	private void refreshTop20Topics() {
+		final int TOP20_TOPICS = 20;
 
-		popularTopics.clear();
-		for (int i = 0; i < LIMIT && 0 < topics.size(); i++) {
-			popularTopics.add(topics.poll());
+		top20Topics.clear();
+		for (int i = 0; i < TOP20_TOPICS && 0 < topics.size(); i++) {
+			top20Topics.add(topics.poll());
 		}
 
-		topics.addAll(popularTopics);
+		topics.addAll(top20Topics);
 	}
 }
