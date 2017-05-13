@@ -14,13 +14,14 @@
 		<table class="table table-bordered table-striped">
 			<thead>
 			<tr>
-				<td>Vote</td>
+				<td>Upvote</td><td>Downvote</td>
+				<td>Upvote count</td><td>Downvote count</td>
 				<td>Topic</td>
 			</tr>
 			</thead>
 			<tbody>
 			<tr th:if="${topics.empty}">
-				<td colspan="3">No topics</td>
+				<td colspan="5">No topics</td>
 			</tr>
 			<tr th:each="topic : ${topics}">
 				<td>
@@ -35,6 +36,8 @@
 						<input type="submit" value="down" />
 					</form>
 				</td>
+				<td th:text="${topic.up}"></td>
+				<td th:text="${topic.down}"></td>
 				<td th:text="${topic.text}"></td>
 			</tr>
 			</tbody>
