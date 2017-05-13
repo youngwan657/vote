@@ -11,8 +11,8 @@ import java.util.Map;
 
 @Repository
 public class TopicRepository {
-	Map<Integer, Topic> topicPersistentStorage = new HashMap<>();
-	List<Topic> topics = new ArrayList<>();
+	private Map<Integer, Topic> topicPersistentStorage = new HashMap<>();
+	private List<Topic> topics = new ArrayList<>();
 
 	public List<Topic> getTopics() {
 		return topics;

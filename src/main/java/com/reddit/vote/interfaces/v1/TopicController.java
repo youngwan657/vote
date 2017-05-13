@@ -2,14 +2,12 @@ package com.reddit.vote.interfaces.v1;
 
 import com.reddit.vote.common.Constants;
 import com.reddit.vote.domain.Topic;
-import com.reddit.vote.domain.Vote;
 import com.reddit.vote.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -17,7 +15,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @Controller
-public class RedditController {
+public class TopicController {
 
 	@Autowired
 	private TopicService topicService;
@@ -39,12 +37,6 @@ public class RedditController {
 			return new ModelAndView("topics/form", "formErrors", result.getAllErrors());
 		}
 		topicService.saveTopic(topic);
-		return new ModelAndView("redirect:" + Constants.LIST_URL);
-	}
-
-	@PostMapping(value = Constants.VOTE_URL)
-	public ModelAndView vote(@PathVariable Integer topicId, @Valid Vote vote) {
-		topicService.handleVote(vote.setTopicId(topicId));
 		return new ModelAndView("redirect:" + Constants.LIST_URL);
 	}
 }

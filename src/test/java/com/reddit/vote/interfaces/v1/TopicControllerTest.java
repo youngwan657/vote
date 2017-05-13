@@ -2,7 +2,6 @@ package com.reddit.vote.interfaces.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reddit.vote.common.Constants;
-import com.reddit.vote.domain.Topic;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,7 +18,7 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class RedditControllerTest {
+public class TopicControllerTest {
 
 	private MockMvc mvc;
 	private ObjectMapper mapper;
@@ -47,8 +46,7 @@ public class RedditControllerTest {
 
 	@Test
 	public void submit() throws Exception {
-		mvc.perform(post(Constants.CREATION_URL)
-			.content(mapper.writeValueAsString(new Topic().setText("text1"))))
+		mvc.perform(post(Constants.CREATION_URL))
 			.andExpect(status().is3xxRedirection());
 	}
 }
