@@ -7,6 +7,13 @@ public class Topic {
 	@Size(min = 1, max = 255, message = "A topic size should be between 1 and 255")
 	private String text;
 
+	public Topic() {
+	}
+
+	public Topic(String text) {
+		this.text = text;
+	}
+
 	public String getText() {
 		return this.text;
 	}
