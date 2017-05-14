@@ -1,6 +1,6 @@
 package com.reddit.vote.interfaces.v1;
 
-import com.reddit.vote.common.Constants;
+import com.reddit.vote.common.URL;
 import com.reddit.vote.model.Vote;
 import com.reddit.vote.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,9 +16,9 @@ public class VoteController {
 	@Autowired
 	private TopicService topicService;
 
-	@PostMapping(value = Constants.VOTE_URL)
+	@PostMapping(value = URL.V1_REDDIT_TOPICS_ID)
 	public ModelAndView vote(@Valid Vote vote) {
 		topicService.vote(vote);
-		return new ModelAndView("redirect:" + Constants.TOP20_URL);
+		return new ModelAndView("redirect:" + URL.V1_REDDIT_TOPICS);
 	}
 }

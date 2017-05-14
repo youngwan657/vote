@@ -1,7 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.reddit.vote.common.Constants;
+import com.reddit.vote.common.URL;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -34,19 +34,19 @@ public class TopicControllerTest {
 
 	@Test
 	public void getTopics() throws Exception {
-		mvc.perform(get(Constants.TOP20_URL))
+		mvc.perform(get(URL.V1_REDDIT_TOPICS))
 			.andExpect(status().isOk());
 	}
 
 	@Test
 	public void showForm() throws Exception {
-		mvc.perform(get(Constants.FORM_URL))
+		mvc.perform(get(URL.V1_REDDIT_TOPICS_NEW))
 			.andExpect(status().isOk());
 	}
 
 	@Test
 	public void submit() throws Exception {
-		mvc.perform(post(Constants.CREATION_URL))
+		mvc.perform(post(URL.V1_REDDIT_TOPICS))
 			.andExpect(status().is3xxRedirection());
 	}
 }
