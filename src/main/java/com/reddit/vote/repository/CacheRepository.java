@@ -18,11 +18,6 @@ public class CacheRepository {
 		return topics;
 	}
 
-	public void save(Topic topic) {
-		topics.add(topic);
-		refresh();
-	}
-
 	public void refresh() {
 		final int LIMIT = 20;
 

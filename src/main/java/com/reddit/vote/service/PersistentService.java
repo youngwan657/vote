@@ -12,10 +12,6 @@ public class PersistentService {
 	@Autowired
 	private PersistentRepository persistentRepository;
 
-	public int size() {
-		return persistentRepository.size();
-	}
-
 	public void save(Topic topic) {
 		persistentRepository.save(topic);
 	}
