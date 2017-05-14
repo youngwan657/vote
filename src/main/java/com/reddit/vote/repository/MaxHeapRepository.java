@@ -7,15 +7,15 @@ import java.util.Collection;
 import java.util.PriorityQueue;
 
 @Repository
-public class AllTopicsRepository {
+public class MaxHeapRepository {
 	private PriorityQueue<Topic> topics;
 	private static final int DEFAULT_INITIAL_CAPACITY = 11;
 
-	public AllTopicsRepository() {
+	public MaxHeapRepository() {
 		topics = new PriorityQueue<>(DEFAULT_INITIAL_CAPACITY, (o1, o2) -> (o2.getUp() - o1.getUp()));
 	}
 
-	public void addAll(Collection<? extends Topic> list) {
+	public void save(Collection<? extends Topic> list) {
 		topics.addAll(list);
 	}
 

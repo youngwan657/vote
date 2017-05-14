@@ -8,9 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Repository
-public class TopTopicsRepository {
+public class CacheRepository {
 	@Autowired
-	private AllTopicsRepository allTopicsRepository;
+	private MaxHeapRepository maxHeapRepository;
 
 	private List<Topic> topics = new ArrayList<>();
 
@@ -27,10 +27,10 @@ public class TopTopicsRepository {
 		final int LIMIT = 20;
 
 		topics.clear();
-		for (int i = 0; i < LIMIT && 0 < allTopicsRepository.size(); i++) {
-			topics.add(allTopicsRepository.poll());
+		for (int i = 0; i < LIMIT && 0 < maxHeapRepository.size(); i++) {
+			topics.add(maxHeapRepository.poll());
 		}
 
-		allTopicsRepository.addAll(topics);
+		maxHeapRepository.save(topics);
 	}
 }
