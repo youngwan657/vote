@@ -1,5 +1,6 @@
 package com.reddit.vote.repository;
 
+import com.google.common.base.Preconditions;
 import com.reddit.vote.model.Topic;
 import org.springframework.stereotype.Repository;
 
@@ -16,10 +17,12 @@ public class MaxHeapRepository {
 	}
 
 	public void save(Collection<? extends Topic> list) {
+		Preconditions.checkNotNull(list);
 		topics.addAll(list);
 	}
 
 	public void save(Topic topic) {
+		Preconditions.checkNotNull(topic);
 		topics.offer(topic);
 	}
 
@@ -32,6 +35,7 @@ public class MaxHeapRepository {
 	}
 
 	public void refresh(Topic topic) {
+		Preconditions.checkNotNull(topic);
 		topics.remove(topic);
 		topics.add(topic);
 	}
