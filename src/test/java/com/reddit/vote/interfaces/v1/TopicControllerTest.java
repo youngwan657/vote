@@ -1,6 +1,5 @@
 package com.reddit.vote.interfaces.v1;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reddit.vote.common.URL;
 import org.junit.Before;
 import org.junit.Test;
@@ -21,7 +20,6 @@ import static org.springframework.test.web.servlet.setup.MockMvcBuilders.webAppC
 public class TopicControllerTest {
 
 	private MockMvc mvc;
-	private ObjectMapper mapper;
 
 	@Autowired
 	private WebApplicationContext webApplicationContext;
@@ -29,7 +27,6 @@ public class TopicControllerTest {
 	@Before
 	public void setup() throws Exception {
 		mvc = webAppContextSetup(webApplicationContext).build();
-		mapper = new ObjectMapper();
 	}
 
 	@Test
