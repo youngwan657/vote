@@ -43,7 +43,14 @@ public class TopicControllerTest {
 
 	@Test
 	public void submit() throws Exception {
-		mvc.perform(post(URL.V1_REDDIT_TOPICS))
+		mvc.perform(post(URL.V1_REDDIT_TOPICS)
+			.param("text", "text1"))
 			.andExpect(status().is3xxRedirection());
+	}
+
+	@Test
+	public void submitWithInvalidData() throws Exception {
+		mvc.perform(post(URL.V1_REDDIT_TOPICS))
+			.andExpect(status().isOk());
 	}
 }
