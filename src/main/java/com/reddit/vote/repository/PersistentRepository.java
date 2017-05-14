@@ -11,10 +11,6 @@ import java.util.Map;
 public class PersistentRepository {
 	private Map<Integer, Topic> topics = new HashMap<>();
 
-	public int size() {
-		return topics.size();
-	}
-
 	public void save(Topic topic) {
 		Preconditions.checkNotNull(topic);
 		topics.put(topic.getId(), topic);
@@ -28,5 +24,9 @@ public class PersistentRepository {
 	public Topic downvote(int topicId) {
 		Preconditions.checkNotNull(topics.get(topicId));
 		return topics.get(topicId).downvote();
+	}
+
+	public Map<Integer, Topic> getTopics() {
+		return topics;
 	}
 }
