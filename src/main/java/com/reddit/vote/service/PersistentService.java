@@ -1,5 +1,6 @@
 package com.reddit.vote.service;
 
+import com.google.common.base.Preconditions;
 import com.reddit.vote.model.Topic;
 import com.reddit.vote.model.Vote;
 import com.reddit.vote.repository.PersistentRepository;
@@ -20,6 +21,7 @@ public class PersistentService {
 	}
 
 	public Topic vote(Vote vote) {
+		Preconditions.checkNotNull(vote);
 		Topic topic = null;
 		switch(vote.getVoteType()) {
 			case UP:

@@ -1,5 +1,6 @@
 package com.reddit.vote.service;
 
+import com.google.common.base.Preconditions;
 import com.reddit.vote.model.Topic;
 import com.reddit.vote.repository.AllTopicsRepository;
 import com.reddit.vote.repository.TopTopicsRepository;
@@ -21,11 +22,13 @@ public class CacheService {
 	}
 
 	public void save(Topic topic) {
+		Preconditions.checkNotNull(topic);
 		allTopicsRepository.save(topic);
 		topTopicsRepository.refresh();
 	}
 
 	public void refresh(Topic topic) {
+		Preconditions.checkNotNull(topic);
 		allTopicsRepository.refresh(topic);
 		topTopicsRepository.refresh();
 	}
