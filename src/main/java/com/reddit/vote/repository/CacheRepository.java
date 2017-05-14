@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 @Repository
@@ -12,7 +13,7 @@ public class CacheRepository {
 	@Autowired
 	private MaxHeapRepository maxHeapRepository;
 
-	private List<Topic> topics = new ArrayList<>();
+	private List<Topic> topics = Collections.synchronizedList(new ArrayList<>());
 
 	public List<Topic> getTopics() {
 		return topics;

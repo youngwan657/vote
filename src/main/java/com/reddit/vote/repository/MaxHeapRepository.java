@@ -16,12 +16,12 @@ public class MaxHeapRepository {
 		topics = new PriorityQueue<>(DEFAULT_INITIAL_CAPACITY, (o1, o2) -> (o2.getUp() - o1.getUp()));
 	}
 
-	public void save(Collection<? extends Topic> list) {
+	public synchronized void save(Collection<? extends Topic> list) {
 		Preconditions.checkNotNull(list);
 		topics.addAll(list);
 	}
 
-	public void save(Topic topic) {
+	public synchronized void save(Topic topic) {
 		Preconditions.checkNotNull(topic);
 		topics.offer(topic);
 	}

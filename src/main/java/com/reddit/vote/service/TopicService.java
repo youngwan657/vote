@@ -22,13 +22,13 @@ public class TopicService {
 		return cacheService.getTopTopics();
 	}
 
-	public void save(Topic topic) {
+	public synchronized void save(Topic topic) {
 		topic.setId(counterService.generateId());
 		persistentService.save(topic);
 		cacheService.save(topic);
 	}
 
-	public void vote(Vote vote) {
+	public synchronized void vote(Vote vote) {
 		Topic topic = persistentService.vote(vote);
 		cacheService.refresh(topic);
 	}
