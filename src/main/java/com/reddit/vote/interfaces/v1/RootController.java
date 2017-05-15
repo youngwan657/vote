@@ -1,6 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
-import com.reddit.vote.common.URL;
+import com.reddit.vote.common.QueryString;
+import com.reddit.vote.common.Uri;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,6 +11,6 @@ public class RootController {
 
 	@GetMapping(value = "/")
 	public ModelAndView redirect() {
-		return new ModelAndView("redirect:" + URL.V1_REDDIT_TOPICS);
+		return new ModelAndView("redirect:" + Uri.V1_REDDIT_TOPICS + QueryString.TOP20);
 	}
 }

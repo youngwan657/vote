@@ -1,6 +1,7 @@
 package com.reddit.vote.interfaces.v1;
 
-import com.reddit.vote.common.URL;
+import com.reddit.vote.common.QueryString;
+import com.reddit.vote.common.Uri;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -31,26 +32,26 @@ public class TopicControllerTest {
 
 	@Test
 	public void getTopics() throws Exception {
-		mvc.perform(get(URL.V1_REDDIT_TOPICS))
+		mvc.perform(get(Uri.V1_REDDIT_TOPICS + QueryString.TOP20))
 			.andExpect(status().isOk());
 	}
 
 	@Test
 	public void showForm() throws Exception {
-		mvc.perform(get(URL.V1_REDDIT_TOPICS_NEW))
+		mvc.perform(get(Uri.V1_REDDIT_TOPICS_NEW))
 			.andExpect(status().isOk());
 	}
 
 	@Test
 	public void submit() throws Exception {
-		mvc.perform(post(URL.V1_REDDIT_TOPICS)
+		mvc.perform(post(Uri.V1_REDDIT_TOPICS)
 			.param("text", "text1"))
 			.andExpect(status().is3xxRedirection());
 	}
 
 	@Test
 	public void submitWithInvalidData() throws Exception {
-		mvc.perform(post(URL.V1_REDDIT_TOPICS))
+		mvc.perform(post(Uri.V1_REDDIT_TOPICS))
 			.andExpect(status().isOk());
 	}
 }
