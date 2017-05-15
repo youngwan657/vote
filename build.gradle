@@ -23,10 +23,9 @@ repositories {
 
 
 dependencies {
+	compile('com.google.guava:guava:21.0')
 	compile('org.springframework.boot:spring-boot-starter-web')
 	compile('org.springframework.boot:spring-boot-starter-validation')
 	compile('org.springframework.boot:spring-boot-starter-thymeleaf')
-	compile('io.springfox:springfox-swagger2:2.5.0')
-	compile('io.springfox:springfox-swagger-ui:2.5.0')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 }
