@@ -1,7 +1,6 @@
 package com.reddit.vote.service;
 
-import com.reddit.vote.model.Vote;
-import com.reddit.vote.model.VoteType;
+import com.reddit.vote.model.Topic;
 import com.reddit.vote.repository.PersistentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,12 +23,11 @@ public class PersistentServiceTest {
 	@Test
 	public void vote() throws Exception {
 		// Given
-		Vote upvote = new Vote().setVoteType(VoteType.UP);
-		Vote downvote = new Vote().setVoteType(VoteType.DOWN);
+		persistentService.save(new Topic().setId(1));
 
 		// When
-		persistentService.vote(upvote);
-		persistentService.vote(downvote);
+		persistentService.upvote(1);
+		persistentService.downvote(1);
 
 		// Then
 		verify(persistentRepository, times(1)).upvote(anyInt());

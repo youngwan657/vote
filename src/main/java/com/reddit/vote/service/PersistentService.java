@@ -16,18 +16,11 @@ public class PersistentService {
 		persistentRepository.save(topic);
 	}
 
-	public Topic vote(Vote vote) {
-		Preconditions.checkNotNull(vote);
-		Topic topic = null;
-		switch(vote.getVoteType()) {
-			case UP:
-				topic = persistentRepository.upvote(vote.getTopicId());
-				break;
+	public Topic upvote(Integer topicId) {
+		return persistentRepository.upvote(topicId);
+	}
 
-			case DOWN:
-				topic = persistentRepository.downvote(vote.getTopicId());
-				break;
-		}
-		return topic;
+	public Topic downvote(Integer topicId) {
+		return persistentRepository.downvote(topicId);
 	}
 }

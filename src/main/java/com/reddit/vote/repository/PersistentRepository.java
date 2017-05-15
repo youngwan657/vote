@@ -16,12 +16,12 @@ public class PersistentRepository {
 		topics.put(topic.getId(), topic);
 	}
 
-	public Topic upvote(int topicId) {
+	public Topic upvote(Integer topicId) {
 		Preconditions.checkNotNull(topics.get(topicId));
 		return topics.get(topicId).upvote();
 	}
 
-	public Topic downvote(int topicId) {
+	public Topic downvote(Integer topicId) {
 		Preconditions.checkNotNull(topics.get(topicId));
 		return topics.get(topicId).downvote();
 	}

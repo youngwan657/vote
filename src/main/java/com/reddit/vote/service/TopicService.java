@@ -1,8 +1,6 @@
 package com.reddit.vote.service;
 
 import com.reddit.vote.model.Topic;
-import com.reddit.vote.model.Vote;
-import com.reddit.vote.model.VoteType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -29,10 +27,12 @@ public class TopicService {
 		cacheService.save(topic);
 	}
 
-	public synchronized void vote(Vote vote) {
-		Topic topic = persistentService.vote(vote);
-		if (vote.getVoteType() == VoteType.UP) {
-			cacheService.refresh(topic);
-		}
+	public synchronized void upvote(Integer topicId) {
+		Topic topic = persistentService.upvote(topicId);
+		cacheService.refresh(topic);
+	}
+
+	public synchronized void downvote(Integer topicId) {
+		Topic topic = persistentService.downvote(topicId);
 	}
 }

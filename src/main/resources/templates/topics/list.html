@@ -25,14 +25,12 @@
 			</tr>
 			<tr th:each="topic : ${topics}">
 				<td>
-					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
-						<input type="hidden" name="voteType" value="UP" />
+					<form th:action="@{'/v1/reddit/topics/' + ${topic.id} + '/up'}" method="post">
 						<input type="submit" value="up" />
 					</form>
 				</td>
 				<td>
-					<form th:action="@{'/v1/reddit/topics/' + ${topic.id}}" method="post">
-						<input type="hidden" name="voteType" value="DOWN" />
+					<form th:action="@{'/v1/reddit/topics/' + ${topic.id} + '/down'}" method="post">
 						<input type="submit" value="down" />
 					</form>
 				</td>
