@@ -33,6 +33,6 @@ public class TopicService {
 	}
 
 	public synchronized void downvote(Integer topicId) {
-		Topic topic = persistentService.downvote(topicId);
+		persistentService.downvote(topicId);
 	}
 }
